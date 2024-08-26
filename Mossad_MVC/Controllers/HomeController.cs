@@ -12,7 +12,6 @@ namespace Mossad_MVC.Controllers
         {
             _logger = logger;
         }
-
         public IActionResult Index()
         {
             return View();

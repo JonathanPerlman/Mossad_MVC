@@ -1,0 +1,65 @@
+﻿@model IEnumerable<Mossad_MVC.Models.MissionViewModel>
+@{
+    ViewData["Title"] = "GetSuggestionMissions";
+}
+
+<h1>מערכת ניהול משימות</h1>
+
+<table class="table">
+    <thead>
+        <script>
+            setTimeout(function () {
+                window.location.reload(1);
+            }, 5000);
+        </script>
+        <tr>
+            <th>
+                שם הסוכן
+            </th>
+            <th>
+                כינוי הסוכן
+            </th>
+            <th>
+                כינוי המטרה
+            </th>
+            <th>
+                מיקום מטרה
+            </th>
+            <th>
+                :המרחק
+            </th>
+            <th>
+                :זמן לחיסול
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AgentName)
+                </td>
+                <td>
+                    @(item.AgentX + "," + item.AgentY)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TargetName)
+                </td>
+                <td>
+                    @(item.TargetX + "," + item.TaregtY)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Distance)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TimeLeft)
+                </td>
+                <td>
+                    @Html.ActionLink("Assign", "UpdateMissionStatus", new { id=item.Id  }) |
+                    @Html.ActionLink("Details", "GetMissionDetails", new { id = item.Id }) |
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
