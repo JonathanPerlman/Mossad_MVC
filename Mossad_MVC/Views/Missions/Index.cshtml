@@ -3,7 +3,7 @@
     ViewData["Title"] = "GetSuggestionMissions";
 }
 
-<h1>מערכת ניהול משימות</h1>
+<h1>Manage Tasks System</h1>
 
 <table class="table">
     <thead>
@@ -14,22 +14,31 @@
         </script>
         <tr>
             <th>
-                שם הסוכן
+                Agent name
             </th>
             <th>
-                כינוי הסוכן
+                Agent location
             </th>
             <th>
-                כינוי המטרה
+                Target name
             </th>
             <th>
-                מיקום מטרה
+                Target location
             </th>
             <th>
-                :המרחק
+                Distnace
             </th>
             <th>
-                :זמן לחיסול
+                Status
+            </th>
+            <th>
+                Time left
+            </th>
+            <th>
+                Actions
+            </th>
+            <th>
+
             </th>
         </tr>
     </thead>
@@ -53,10 +62,16 @@
                     @Html.DisplayFor(modelItem => item.Distance)
                 </td>
                 <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+                <td>
                     @Html.DisplayFor(modelItem => item.TimeLeft)
                 </td>
                 <td>
-                    @Html.ActionLink("Assign", "UpdateMissionStatus", new { id=item.Id  }) |
+                    <a asp-action="UpdateMissionStatus" asp-route-id="@item.Id" class="btn btn-primary">Assign</a>
+                </td>
+                <td>
+                 @*    @Html.ActionLink("Assign", "UpdateMissionStatus", new { id=item.Id  }) | *@
                     @Html.ActionLink("Details", "GetMissionDetails", new { id = item.Id }) |
                 </td>
             </tr>

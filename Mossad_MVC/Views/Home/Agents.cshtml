@@ -1,0 +1,79 @@
+﻿@model IEnumerable<Mossad_MVC.Models.AgentViewModel>
+
+@{
+    ViewData["Title"] = "Agents";
+}
+
+<h1>Agents</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PhotoUrl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NickName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AgentX)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AgentY)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TimeLeft)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.KillsCount)
+            </th>
+            <th>
+                Mission Details
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                <img src="@item.PhotoUrl"/>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NickName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AgentX)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AgentY)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TimeLeft)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.KillsCount)
+            </td>
+            <td>
+                    @if (item.MissionId > 0)
+                    {
+                        @Html.ActionLink("Mission", "GetMissionDetails", "Missions", new {  id=item.MissionId })
+                    }
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<script>
+    setTimeout(function () {
+        window.location.reload(1);
+    }, 5000);
+</script>

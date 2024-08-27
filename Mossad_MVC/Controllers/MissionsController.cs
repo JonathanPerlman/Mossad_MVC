@@ -26,8 +26,9 @@ namespace Mossad_MVC.Controllers
             if (response.IsSuccessStatusCode)
             {
                 var result = await response.Content.ReadAsStringAsync();
-                ListMissionsViewModel missionsModel = JsonConvert.DeserializeObject<ListMissionsViewModel>(result);
-                return View("Index", missionsModel.missions);
+                // המרה של הנתונים ואכלוסם במודל שנשלח מהAPI
+                List<MissionViewModel> missionsModel = JsonConvert.DeserializeObject<List<MissionViewModel>>(result);
+                return View("Index", missionsModel);
             }
             else
             {
@@ -62,9 +63,9 @@ namespace Mossad_MVC.Controllers
             if (response.IsSuccessStatusCode)
             {
                 var result = await response.Content.ReadAsStringAsync();
-                GetMissionResponse missionsModel = JsonConvert.DeserializeObject<GetMissionResponse>(result);
+                MissionViewModel missionModel = JsonConvert.DeserializeObject<MissionViewModel>(result);
 
-                return View("Details", missionsModel.missionViewModel) ;
+                return View("Details", missionModel) ;
 
             }
             else

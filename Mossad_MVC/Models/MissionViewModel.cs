@@ -1,4 +1,6 @@
-﻿namespace Mossad_MVC.Models
+﻿using static Mossad_MVC.Models.Enums;
+
+namespace Mossad_MVC.Models
 {
     public class MissionViewModel
     {
@@ -10,7 +12,7 @@
         public Double TargetX { get; set; }
         public Double TaregtY { get; set; }
         public Double Distance { get; set; }
-
+        public MissionStatus? Status { get; set; }
         public Double? TimeLeft { get; set; }
     }
 

@@ -5,6 +5,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+builder.Services.AddHttpClient<HomeController>();
 builder.Services.AddHttpClient<MissionsController>();
 
 var app = builder.Build();
@@ -27,6 +28,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Missions}/{action=GetSuggestionMissions}/{id?}");
+    pattern: "{controller=Home}/{action=GetAllData}/{id?}");
 
 app.Run();
